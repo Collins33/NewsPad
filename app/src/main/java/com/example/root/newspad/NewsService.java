@@ -16,8 +16,8 @@ public class NewsService {
         //create the client
         OkHttpClient client = new OkHttpClient();
         //build the url plus the query
-        HttpUrl.Builder urlBuilder=HttpUrl.parse("https://newsapi.org/v1/articles?sortBy=latest").newBuilder();
-        urlBuilder.addQueryParameter("api",Constants.NEWS_TOKEN);
+        HttpUrl.Builder urlBuilder=HttpUrl.parse("https://newsapi.org/v1/articles?").newBuilder();
+        urlBuilder.addQueryParameter("apiKey",Constants.NEWS_TOKEN);
         urlBuilder.addQueryParameter(Constants.NEWS_SOURCE,source);
         //build the url
         String url=urlBuilder.build().toString();
