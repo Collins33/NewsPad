@@ -6,4 +6,5 @@ package com.example.root.newspad;
 
 public class Constants {
     public static final String NEWS_TOKEN= BuildConfig.NEWS_TOKEN;
+    public static final String NEWS_SOURCE = "source";
 }

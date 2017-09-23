@@ -19,4 +19,8 @@ public class secondActivity extends AppCompatActivity {
         //set text
         newsSource.setText("NEWS FROM " + source);
     }
+
+
+    //method to get the news
+
 }
