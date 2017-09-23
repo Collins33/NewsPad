@@ -1,11 +1,19 @@
 package com.example.root.newspad;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+import java.util.ArrayList;
+
 import okhttp3.Callback;
 
 import okhttp3.Call;
 import okhttp3.HttpUrl;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
+import okhttp3.Response;
 
 /**
  * Created by root on 9/23/17.
@@ -32,5 +40,46 @@ public class NewsService {
 
 
 
+    }
+
+    //process the results
+    public  ArrayList<News> processResults(Response response){
+        //create arraylist to contain the news
+        ArrayList<News> news=new ArrayList<>();
+
+        try{
+            //capture data
+            String jsonData = response.body().string();
+            if(response.isSuccessful()){
+                //create new instance of jsonobject and pass jsondata as argument
+                JSONObject newsaoabject=new JSONObject(jsonData);
+                //articles is the name of array we want
+                JSONArray newsArray= newsaoabject.getJSONArray("articles");
+                 //loop through the array
+                for(int i=0; i<=newsArray.length(); i++){
+                    JSONObject newsJSON = newsArray.getJSONObject(i);
+                    //get the properties
+
+                    String author=newsJSON.getString("author");
+                    String title=newsJSON.getString("title");
+                    String description=newsJSON.getString("description");
+                    String url=newsJSON.getString("url");
+                    String urlToImage=newsJSON.getString("urlToImage");
+                    String publishedAt=newsJSON.getString("publishedAt");
+
+                    //create new news object
+                    News myNews=new News(author,title,description,url,urlToImage,publishedAt);
+                    //add object to array
+                    news.add(myNews);
+                }
+
+            }
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return news;
     }
 }

@@ -7,6 +7,7 @@ import android.util.Log;
 import android.widget.TextView;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -14,6 +15,7 @@ import okhttp3.Response;
 
 public class secondActivity extends AppCompatActivity {
      private TextView newsSource;
+    public ArrayList<News> news = new ArrayList<>();
     public static final String TAG = secondActivity.class.getSimpleName();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,13 +44,15 @@ public class secondActivity extends AppCompatActivity {
 
               @Override
               public void onResponse(Call call, Response response) throws IOException {
-                   try{
-                       String jsonData = response.body().string();
-                       Log.v(TAG, jsonData);
-                   }
-                   catch (IOException e) {
-                       e.printStackTrace();
-                   }
+                  try {
+                      String jsonData = response.body().string();
+                      if (response.isSuccessful()) {
+                          Log.v(TAG, jsonData);
+                          news = newsService.processResults(response);
+                      }
+                  } catch (IOException e) {
+                      e.printStackTrace();
+                  }
               }
           });
       }
