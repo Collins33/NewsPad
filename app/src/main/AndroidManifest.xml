@@ -17,7 +17,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".Log_In" />
-        <activity android:name=".Create_Account"></activity>
+        <activity android:name=".Create_Account" />
+        <activity android:name=".secondActivity"></activity>
     </application>
 
 </manifest>
