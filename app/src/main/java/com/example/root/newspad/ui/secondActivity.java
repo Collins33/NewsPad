@@ -1,4 +1,4 @@
-package com.example.root.newspad;
+package com.example.root.newspad.ui;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -7,6 +7,10 @@ import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import com.example.root.newspad.R;
+import com.example.root.newspad.models.News;
+import com.example.root.newspad.services.NewsService;
 
 import java.io.IOException;
 import java.util.ArrayList;

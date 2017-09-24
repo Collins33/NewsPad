@@ -1,4 +1,4 @@
-package com.example.root.newspad;
+package com.example.root.newspad.models;
 
 /**
  * Created by root on 9/23/17.

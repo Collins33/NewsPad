@@ -1,7 +1,9 @@
-package com.example.root.newspad;
+package com.example.root.newspad.ui;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.example.root.newspad.R;
 
 public class Create_Account extends AppCompatActivity {
 

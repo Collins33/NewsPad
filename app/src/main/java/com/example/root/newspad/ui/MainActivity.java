@@ -1,10 +1,12 @@
-package com.example.root.newspad;
+package com.example.root.newspad.ui;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+
+import com.example.root.newspad.R;
 
 public class MainActivity extends AppCompatActivity {
     private EditText newsSource;

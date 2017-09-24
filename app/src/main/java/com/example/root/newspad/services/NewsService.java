@@ -1,4 +1,7 @@
-package com.example.root.newspad;
+package com.example.root.newspad.services;
+
+import com.example.root.newspad.Constants;
+import com.example.root.newspad.models.News;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -25,7 +28,7 @@ public class NewsService {
         OkHttpClient client = new OkHttpClient();
         //build the url plus the query
         HttpUrl.Builder urlBuilder=HttpUrl.parse("https://newsapi.org/v1/articles?").newBuilder();
-        urlBuilder.addQueryParameter("apiKey",Constants.NEWS_TOKEN);
+        urlBuilder.addQueryParameter("apiKey", Constants.NEWS_TOKEN);
         urlBuilder.addQueryParameter(Constants.NEWS_SOURCE,source);
         //build the url
         String url=urlBuilder.build().toString();
