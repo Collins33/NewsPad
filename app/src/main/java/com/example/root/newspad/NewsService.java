@@ -48,7 +48,7 @@ public class NewsService {
         ArrayList<News> news=new ArrayList<>();
 
         try{
-            //capture data
+
             String jsonData = response.body().string();
             if(response.isSuccessful()){
                 //create new instance of jsonobject and pass jsondata as argument

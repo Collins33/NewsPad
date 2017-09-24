@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import java.io.IOException;
@@ -15,12 +17,15 @@ import okhttp3.Response;
 
 public class secondActivity extends AppCompatActivity {
      private TextView newsSource;
+    private ListView mListView;
+
     public ArrayList<News> news = new ArrayList<>();
     public static final String TAG = secondActivity.class.getSimpleName();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
+        mListView = (ListView) findViewById(R.id.listView);
         //recieve the intent
         Intent intent=getIntent();
         String source=intent.getStringExtra("source");
@@ -44,16 +49,24 @@ public class secondActivity extends AppCompatActivity {
 
               @Override
               public void onResponse(Call call, Response response) throws IOException {
-                  try {
-                      String jsonData = response.body().string();
-                      if (response.isSuccessful()) {
-                          Log.v(TAG, jsonData);
-                          news = newsService.processResults(response);
+
+                 news=newsService.processResults(response);
+                  Log.d(TAG,news.toString());
+
+                  secondActivity.this.runOnUiThread(new Runnable() {
+                      @Override
+                      public void run() {
+                          String[] newsNames=new String[news.size()];
+                          for(int i=0;i < newsNames.length; i++){
+                          newsNames[i]=news.get(i).getTitle();
+                          }
+                          ArrayAdapter adapter = new ArrayAdapter(secondActivity.this,
+                                  android.R.layout.simple_list_item_1, newsNames);
+
+                          mListView.setAdapter(adapter);
                       }
-                  } catch (IOException e) {
-                      e.printStackTrace();
-                  }
-              }
-          });
-      }
+                      });
+                  };
+      });
+}
 }
