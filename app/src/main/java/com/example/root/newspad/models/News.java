@@ -5,11 +5,12 @@ package com.example.root.newspad.models;
  */
 
 public class News {
+    private String author;
     private String title;
     private String description;
-    private String author;
-    private String image;
     private String website;
+    private String image;
+
     private String date;
 
     public News(String title,String description,String author,String image,String website,String date){
