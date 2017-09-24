@@ -62,7 +62,7 @@ public class secondActivity extends AppCompatActivity {
                       public void run() {
                           String[] newsNames=new String[news.size()];
                           for(int i=0;i < newsNames.length; i++){
-                          newsNames[i]=news.get(i).getTitle();
+                          newsNames[i]=news.get(i).getAuthor();
                           }
                           ArrayAdapter adapter = new ArrayAdapter(secondActivity.this,
                                   android.R.layout.simple_list_item_1, newsNames);
