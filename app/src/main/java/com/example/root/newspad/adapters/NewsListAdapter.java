@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.example.root.newspad.R;
 import com.example.root.newspad.models.News;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -45,6 +46,7 @@ public class NewsListAdapter extends RecyclerView.Adapter<NewsListAdapter.NewsLi
         public void bindNews(News news){
             mNewsTitle.setText(news.getTitle());
             mNewsAuthor.setText(news.getAuthor());
+            Picasso.with(mContext).load(news.getImage()).into(mNewsImage);
         }
     }
     @Override
