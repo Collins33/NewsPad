@@ -36,9 +36,11 @@ public class NewsListAdapter extends RecyclerView.Adapter<NewsListAdapter.NewsLi
     //the view holder
 
     public class NewsListViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
-          @Bind(R.id.newsImageView) ImageView mNewsImage;
-          @Bind(R.id.newsTitle) TextView mNewsTitle;
-          @Bind(R.id.newsAuthor) TextView mNewsAuthor;
+          //@Bind(R.id.newsImageView) ImageView mNewsImage;
+          //@Bind(R.id.newsTitle) TextView mNewsTitle;
+          //@Bind(R.id.newsAuthor) TextView mNewsAuthor;
+            @Bind(R.id.imageView) ImageView mNewsImage;
+            @Bind(R.id.newsTitle) TextView mNewsTitle;
            private Context context;
 
         public NewsListViewHolder(View view){
@@ -57,14 +59,14 @@ public class NewsListAdapter extends RecyclerView.Adapter<NewsListAdapter.NewsLi
         }
         //bind news set contents of layout to the attributes
         public void bindNews(News news){
-            mNewsTitle.setText(news.getTitle());
-            mNewsAuthor.setText(news.getAuthor());
-            Picasso.with(mContext).load(news.getImage()).into(mNewsImage);
+            mNewsTitle.setText(news.getDescription());
+            //mNewsAuthor.setText(news.getAuthor());
+            Picasso.with(mContext).load(news.getWebsite()).into(mNewsImage);
         }
     }
     @Override
     public NewsListAdapter.NewsListViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.news_list, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.news_cards, parent, false);
         NewsListViewHolder viewHolder = new NewsListViewHolder(view);
         return viewHolder;
     }

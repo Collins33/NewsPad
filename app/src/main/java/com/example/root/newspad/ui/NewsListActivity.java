@@ -30,6 +30,7 @@ public class NewsListActivity extends AppCompatActivity {
     public ArrayList<News> news = new ArrayList<>();
     public static final String TAG = NewsListActivity.class.getSimpleName();
     @Bind(R.id.recyclerView) RecyclerView mRecyclerView;
+
     private NewsListAdapter mAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
