@@ -1,6 +1,9 @@
 package com.example.root.newspad.ui;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.graphics.Typeface;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -9,6 +12,7 @@ import android.util.Log;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.example.root.newspad.Constants;
 import com.example.root.newspad.R;
 import com.example.root.newspad.adapters.NewsListAdapter;
 import com.example.root.newspad.models.News;
@@ -26,6 +30,8 @@ import okhttp3.Response;
 public class NewsListActivity extends AppCompatActivity {
      private TextView newsSource;
      private ListView mListView;
+    private SharedPreferences mSharedPreferences;
+    private String mSource;
 
     public ArrayList<News> news = new ArrayList<>();
     public static final String TAG = NewsListActivity.class.getSimpleName();
@@ -44,8 +50,15 @@ public class NewsListActivity extends AppCompatActivity {
         //get the view
         newsSource=(TextView) findViewById(R.id.textView3);
         //set text
-        newsSource.setText("NEWS FROM " + source);
-        getNews(source);
+        newsSource.setText("news form: " +source);
+        Typeface senasation=Typeface.createFromAsset(getAssets(),"fonts/sensation.ttf");
+        newsSource.setTypeface(senasation);
+        mSharedPreferences= PreferenceManager.getDefaultSharedPreferences(this);
+        mSource=mSharedPreferences.getString(Constants.PREFERENCE_SOURCE_KEY,null);
+        if(mSource != null){
+            getNews(mSource);
+        }
+
     }
 
 

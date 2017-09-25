@@ -62,7 +62,7 @@ public class NewsDetailFragment extends Fragment {
             View view= inflater.inflate(R.layout.fragment_news_detail, container, false);
             ButterKnife.bind(this,view);
 
-        Picasso.with(view.getContext()).load(mNews.getImage()).into(mNewsImage);
+        Picasso.with(view.getContext()).load(mNews.getWebsite()).into(mNewsImage);
         mNewsTitle.setText(mNews.getTitle());
         mNewsDescription.setText(mNews.getDescription());
         mNewsAutor.setText(mNews.getAuthor());

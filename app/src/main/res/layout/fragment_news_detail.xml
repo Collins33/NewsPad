@@ -10,13 +10,13 @@
 
     <TextView
         android:id="@+id/newsTitle"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/newsImage"
+        android:layout_centerHorizontal="true"
         android:text="NewsTitle"
         android:textColor="@android:color/holo_blue_bright"
-        android:textSize="16dp"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+        android:textSize="16dp" />
 
     <Button
         android:id="@+id/saveNews"
@@ -48,14 +48,14 @@
 
     <TextView
         android:id="@+id/newsDescription"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/newsImage"
+        android:layout_below="@+id/newsTitle"
         android:text="newsDescription"
         android:textColor="@android:color/black"
-        android:textSize="30dp" />
+        android:textSize="25dp" />
 
     <TextView
         android:id="@+id/newsAuthor"
@@ -64,15 +64,15 @@
         android:text="Author"
         android:textColor="@android:color/holo_blue_bright"
         android:textSize="20dp"
-        android:layout_above="@+id/saveNews"
+        android:layout_marginTop="23dp"
+        android:layout_below="@+id/newsDescription"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="59dp" />
+        android:layout_alignParentStart="true" />
 
     <ImageView
         android:id="@+id/newsImage"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="200dp"
         app:srcCompat="@android:color/background_dark"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
