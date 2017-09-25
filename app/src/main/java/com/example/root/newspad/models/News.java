@@ -22,6 +22,7 @@ public class News {
         this.date=date;
 
     }
+    public News(){}
 
     public String getDescription() {
         return description;
