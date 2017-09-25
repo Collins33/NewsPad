@@ -1,6 +1,7 @@
 package com.example.root.newspad.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,7 +11,10 @@ import android.widget.TextView;
 
 import com.example.root.newspad.R;
 import com.example.root.newspad.models.News;
+import com.example.root.newspad.ui.NewsDetailActivity;
 import com.squareup.picasso.Picasso;
+
+import org.parceler.Parcels;
 
 import java.util.ArrayList;
 
@@ -31,7 +35,7 @@ public class NewsListAdapter extends RecyclerView.Adapter<NewsListAdapter.NewsLi
     }
     //the view holder
 
-    public class NewsListViewHolder extends RecyclerView.ViewHolder{
+    public class NewsListViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
           @Bind(R.id.newsImageView) ImageView mNewsImage;
           @Bind(R.id.newsTitle) TextView mNewsTitle;
           @Bind(R.id.newsAuthor) TextView mNewsAuthor;
@@ -41,6 +45,15 @@ public class NewsListAdapter extends RecyclerView.Adapter<NewsListAdapter.NewsLi
             super(view);
             ButterKnife.bind(this, view);
             context=view.getContext();
+            view.setOnClickListener(this);
+        }
+        @Override
+        public void onClick(View v) {
+            int itemPosition = getLayoutPosition();
+            Intent intent = new Intent(mContext, NewsDetailActivity.class);
+            intent.putExtra("position", itemPosition);
+            intent.putExtra("news", Parcels.wrap(mNews));
+            context.startActivity(intent);
         }
         //bind news set contents of layout to the attributes
         public void bindNews(News news){

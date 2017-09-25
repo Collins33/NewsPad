@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -24,12 +23,12 @@ import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
 
-public class secondActivity extends AppCompatActivity {
+public class NewsListActivity extends AppCompatActivity {
      private TextView newsSource;
      private ListView mListView;
 
     public ArrayList<News> news = new ArrayList<>();
-    public static final String TAG = secondActivity.class.getSimpleName();
+    public static final String TAG = NewsListActivity.class.getSimpleName();
     @Bind(R.id.recyclerView) RecyclerView mRecyclerView;
     private NewsListAdapter mAdapter;
     @Override
@@ -65,7 +64,7 @@ public class secondActivity extends AppCompatActivity {
                  news=newsService.processResults(response);
                   Log.d(TAG,news.toString());
 
-                  secondActivity.this.runOnUiThread(new Runnable() {
+                  NewsListActivity.this.runOnUiThread(new Runnable() {
                       @Override
                       public void run() {
                           /**
@@ -73,7 +72,7 @@ public class secondActivity extends AppCompatActivity {
                           for(int i=0;i < newsNames.length; i++){
                           newsNames[i]=news.get(i).getAuthor();
                           }
-                          ArrayAdapter adapter = new ArrayAdapter(secondActivity.this,
+                          ArrayAdapter adapter = new ArrayAdapter(NewsListActivity.this,
                                   android.R.layout.simple_list_item_1, newsNames);
 
                           mListView.setAdapter(adapter);**/
@@ -81,7 +80,7 @@ public class secondActivity extends AppCompatActivity {
                           mAdapter = new NewsListAdapter(getApplicationContext(), news);
                           mRecyclerView.setAdapter(mAdapter);
                           RecyclerView.LayoutManager layoutManager =
-                                  new LinearLayoutManager(secondActivity.this);
+                                  new LinearLayoutManager(NewsListActivity.this);
                           mRecyclerView.setLayoutManager(layoutManager);
                           mRecyclerView.setHasFixedSize(true);
                       }

@@ -1,17 +1,19 @@
 package com.example.root.newspad.models;
 
+import org.parceler.Parcel;
+
 /**
  * Created by root on 9/23/17.
  */
-
+@Parcel
 public class News {
-    private String author;
-    private String title;
-    private String description;
-    private String website;
-    private String image;
+     String author;
+     String title;
+     String description;
+     String website;
+     String image;
 
-    private String date;
+     String date;
 
     public News(String title,String description,String author,String image,String website,String date){
         this.title=title;

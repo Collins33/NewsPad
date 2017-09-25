@@ -20,8 +20,8 @@
         </activity>
         <activity android:name=".ui.Log_In" />
         <activity android:name=".ui.Create_Account" />
-        <activity android:name=".ui.secondActivity" />
-        <activity android:name=".ui.NewsDetail"></activity>
+        <activity android:name=".ui.NewsListActivity" />
+        <activity android:name=".ui.NewsDetailActivity"></activity>
     </application>
 
 </manifest>

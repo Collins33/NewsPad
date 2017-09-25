@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void seeNews(View view){
-        Intent intent=new Intent(this,secondActivity.class);
+        Intent intent=new Intent(this,NewsListActivity.class);
         String source= newsSource.getText().toString();
         intent.putExtra("source",source);
         startActivity(intent);
