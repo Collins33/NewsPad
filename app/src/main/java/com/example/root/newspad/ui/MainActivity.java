@@ -27,6 +27,9 @@ public class MainActivity extends AppCompatActivity {
     private SharedPreferences.Editor mEditor;
     private DatabaseReference mSearchedSource;
 
+    //for the value event listener
+    private ValueEventListener msourceListener;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
                           .getReference()
                           .child(Constants.FIREBASE_CHILD_SEARCHED_LOCATION);
         //add event listener
-        mSearchedSource.addValueEventListener(new ValueEventListener() {
+        msourceListener = mSearchedSource.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                for(DataSnapshot source:dataSnapshot.getChildren()){
@@ -80,4 +83,10 @@ public class MainActivity extends AppCompatActivity {
     //public void addToSharedPreference(String source){
         //mEditor.putString(Constants.PREFERENCE_SOURCE_KEY,source).apply();
     //}
+    //method to remove the eventlistener
+    @Override
+    public void onDestroy(){
+        super.onDestroy();
+        mSearchedSource.removeEventListener(msourceListener);
+    }
 }
