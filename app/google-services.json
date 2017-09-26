@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "1042610047091",
+    "firebase_url": "https://newspad-3405e.firebaseio.com",
+    "project_id": "newspad-3405e",
+    "storage_bucket": "newspad-3405e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1042610047091:android:7c89fd0b09293186",
+        "android_client_info": {
+          "package_name": "com.example.root.newspad"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1042610047091-nov4dcvnd915n7o9kg63vecvq8g2pi0p.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.root.newspad",
+            "certificate_hash": "cc4b250b4fb4a1be20b271eaa79fc6622d772371"
+          }
+        },
+        {
+          "client_id": "1042610047091-25jq4l2c9janoqi30ll05dcr09fq9e0h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC77ZV7TcK5LsKoLMksDhrPDYNNGtVGVw0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1042610047091-25jq4l2c9janoqi30ll05dcr09fq9e0h.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

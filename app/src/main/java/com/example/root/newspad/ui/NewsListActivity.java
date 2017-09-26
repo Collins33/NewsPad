@@ -55,9 +55,8 @@ public class NewsListActivity extends AppCompatActivity {
         newsSource.setTypeface(senasation);
         mSharedPreferences= PreferenceManager.getDefaultSharedPreferences(this);
         mSource=mSharedPreferences.getString(Constants.PREFERENCE_SOURCE_KEY,null);
-        if(mSource != null){
-            getNews(mSource);
-        }
+        Log.d("shared pref",mSource);
+        getNews(source);
 
     }
 
