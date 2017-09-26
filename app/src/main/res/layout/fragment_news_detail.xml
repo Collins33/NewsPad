@@ -25,7 +25,8 @@
         android:text="save news"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        />
 
     <Button
         android:id="@+id/getNews"

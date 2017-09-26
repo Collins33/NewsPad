@@ -11,4 +11,6 @@ public class Constants {
     public static final String PREFERENCE_SOURCE_KEY="source";
     //the key value for adding to firebase
     public static final String FIREBASE_CHILD_SEARCHED_LOCATION = "news-source";
+    //the node to save news to firebase
+    public static final String FIREBASE_CHILD_RESTAURANTS = "news";
 }

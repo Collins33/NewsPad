@@ -8,9 +8,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.root.newspad.Constants;
 import com.example.root.newspad.R;
 import com.example.root.newspad.models.News;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
 
 import org.parceler.Parcels;
@@ -21,7 +25,7 @@ import butterknife.ButterKnife;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class NewsDetailFragment extends Fragment {
+public class NewsDetailFragment extends Fragment implements View.OnClickListener {
     @Bind(R.id.newsTitle) TextView mNewsTitle;
     @Bind(R.id.newsDescription) TextView mNewsDescription;
     @Bind(R.id.newsAuthor) TextView mNewsAutor;
@@ -66,11 +70,21 @@ public class NewsDetailFragment extends Fragment {
         mNewsTitle.setText(mNews.getTitle());
         mNewsDescription.setText(mNews.getDescription());
         mNewsAutor.setText(mNews.getAuthor());
+        mSaveNewsButton.setOnClickListener(this);
 
 
 
         return view;
 
+    }
+
+    @Override
+    public void onClick(View v){
+        DatabaseReference newsRef= FirebaseDatabase
+                .getInstance()
+                .getReference(Constants.FIREBASE_CHILD_RESTAURANTS);
+        newsRef.push().setValue(mNews);
+        Toast.makeText(getContext(),"saved",Toast.LENGTH_LONG).show();
     }
 
 }
