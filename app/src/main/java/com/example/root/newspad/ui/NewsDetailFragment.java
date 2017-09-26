@@ -1,6 +1,7 @@
 package com.example.root.newspad.ui;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -32,6 +33,7 @@ public class NewsDetailFragment extends Fragment implements View.OnClickListener
     @Bind(R.id.newsImage) ImageView mNewsImage;
     @Bind(R.id.saveNews) TextView mSaveNewsButton;
     @Bind(R.id.getNews) TextView mGetNewsButton;
+    @Bind(R.id.webPage) TextView mNewsPage;
 
     private News mNews;
 
@@ -70,7 +72,9 @@ public class NewsDetailFragment extends Fragment implements View.OnClickListener
         mNewsTitle.setText(mNews.getTitle());
         mNewsDescription.setText(mNews.getDescription());
         mNewsAutor.setText(mNews.getAuthor());
+        mNewsPage.setText(mNews.getImage());
         mSaveNewsButton.setOnClickListener(this);
+        mGetNewsButton.setOnClickListener(this);
 
 
 
@@ -79,12 +83,21 @@ public class NewsDetailFragment extends Fragment implements View.OnClickListener
     }
 
     @Override
-    public void onClick(View v){
-        DatabaseReference newsRef= FirebaseDatabase
-                .getInstance()
-                .getReference(Constants.FIREBASE_CHILD_RESTAURANTS);
-        newsRef.push().setValue(mNews);
-        Toast.makeText(getContext(),"saved",Toast.LENGTH_LONG).show();
+    public void onClick(View v) {
+        if (v == mSaveNewsButton) {
+            DatabaseReference newsRef = FirebaseDatabase
+                    .getInstance()
+                    .getReference(Constants.FIREBASE_CHILD_RESTAURANTS);
+            newsRef.push().setValue(mNews);
+            Toast.makeText(getContext(), "saved", Toast.LENGTH_LONG).show();
+        }
+        else if(v == mGetNewsButton){
+            String website=mNewsPage.getText().toString();
+            Intent intent=new Intent(getContext(),WebNews.class);
+            intent.putExtra("website",website);
+            startActivity(intent);
+        }
     }
+
 
 }

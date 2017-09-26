@@ -31,6 +31,12 @@
             android:paddingBottom="20dp">
 
             <TextView
+                android:id="@+id/webPage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TextView" />
+
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="NEWSTITLE Name"
