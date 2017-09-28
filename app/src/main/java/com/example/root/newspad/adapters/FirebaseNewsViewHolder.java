@@ -23,6 +23,7 @@ import org.parceler.Parcels;
 import java.util.ArrayList;
 
 import butterknife.Bind;
+import butterknife.ButterKnife;
 
 /**
  * Created by root on 9/26/17.
@@ -31,8 +32,10 @@ import butterknife.Bind;
 public class FirebaseNewsViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
     private static final int MAX_WIDTH = 200;
     private static final int MAX_HEIGHT = 200;
-    @Bind(R.id.imageView) ImageView mNewsImage;
-    @Bind(R.id.newsTitle) TextView mNewsTitle;
+//    @Bind(R.id.imageView) ImageView mNewsImage;
+//    @Bind(R.id.newsTitle) TextView mNewsTitle;
+    //@Bind(R.id.imageView) ImageView mNewsImage;
+    //@Bind(R.id.newsTitle) TextView mNewsTitle;
 
     View mView;
     Context mContext;
@@ -42,28 +45,25 @@ public class FirebaseNewsViewHolder extends RecyclerView.ViewHolder implements V
         mView=itemView;
         mContext=itemView.getContext();
         itemView.setOnClickListener(this);
+
     }
 
     //bind the views
     public void bindNews(News news){
-        TextView newsTitle=(TextView) mView.findViewById(R.id.newsTitle);
-        TextView newsDescription=(TextView) mView.findViewById(R.id.newsDescription);
-        TextView newsAuthor=(TextView) mView.findViewById(R.id.newsAuthor);
-        ImageView newsImage=(ImageView) mView.findViewById(R.id.newsImage);
+        ImageView newsImage=(ImageView) mView.findViewById(R.id.imageView);
+        TextView  mNewsTitle=(TextView) mView.findViewById(R.id.newsTitle);
 
-        Picasso.with(mContext)
-                .load(news.getWebsite())
-                .resize(MAX_WIDTH, MAX_HEIGHT)
-                .centerCrop()
-                .into(newsImage);
 
-        newsTitle.setText(news.getDescription());
-        newsDescription.setText(news.getAuthor());
+        mNewsTitle.setText(news.getDescription());
+        //mNewsAuthor.setText(news.getAuthor());
+        Picasso.with(mContext).load(news.getWebsite()).resize(MAX_WIDTH, MAX_HEIGHT).centerInside().into(newsImage);
     }
+
     @Override
     public void onClick(View view){
         //create arraylist of news
         final ArrayList<News> news=new ArrayList<>();
+
         DatabaseReference ref= FirebaseDatabase.getInstance().getReference(Constants.FIREBASE_CHILD_RESTAURANTS);
 
         ref.addListenerForSingleValueEvent(new ValueEventListener() {

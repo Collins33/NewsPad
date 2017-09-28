@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.example.root.newspad.Constants;
 import com.example.root.newspad.R;
+import com.example.root.newspad.SavedNewsActivity;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -23,8 +24,8 @@ public class MainActivity extends AppCompatActivity {
     private EditText newsSource;
     private TextView mNewsName;
     private TextView mNewsLogo;
-    private SharedPreferences mSharedPreference;
-    private SharedPreferences.Editor mEditor;
+//    private SharedPreferences mSharedPreference;
+//    private SharedPreferences.Editor mEditor;
     private DatabaseReference mSearchedSource;
 
     //for the value event listener
@@ -35,15 +36,15 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        newsSource= (EditText) findViewById(R.id.editText);
+
         mNewsName=(TextView) findViewById(R.id.textView);
         mNewsLogo=(TextView) findViewById(R.id.appLogo);
         Typeface sensation=Typeface.createFromAsset(getAssets(),"fonts/sensation.ttf");
         mNewsLogo.setTypeface(sensation);
         mNewsName.setTypeface(sensation);
 
-        mSharedPreference= PreferenceManager.getDefaultSharedPreferences(this);
-        mEditor=mSharedPreference.edit();
+//        mSharedPreference= PreferenceManager.getDefaultSharedPreferences(this);
+//        mEditor=mSharedPreference.edit();
 
         mSearchedSource= FirebaseDatabase
                           .getInstance()
@@ -70,16 +71,20 @@ public class MainActivity extends AppCompatActivity {
 
     public void seeNews(View view){
         Intent intent=new Intent(this,NewsListActivity.class);
-        String source= newsSource.getText().toString();
-        intent.putExtra("source",source);
+//        String source= newsSource.getText().toString();
+//        intent.putExtra("source",source);
 
         //addToSharedPreference(source);
         startActivity(intent);
-        addToFireBase(source);
+        //addToFireBase(source);
     }
-    public void addToFireBase(String source){
-        mSearchedSource.push().setValue(source);
+    public void savedNews(View view){
+        Intent intent = new Intent(MainActivity.this, SavedNewsActivity.class);
+        startActivity(intent);
     }
+//    public void addToFireBase(String source){
+//        mSearchedSource.push().setValue(source);
+//    }
     //public void addToSharedPreference(String source){
         //mEditor.putString(Constants.PREFERENCE_SOURCE_KEY,source).apply();
     //}

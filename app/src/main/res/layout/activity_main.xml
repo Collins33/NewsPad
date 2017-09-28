@@ -52,15 +52,15 @@
         tools:layout_editor_absoluteX="251dp"
         tools:layout_editor_absoluteY="648dp" />
 
-    <EditText
-        android:id="@+id/editText"
+
+    <Button
+        android:id="@+id/button2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@+id/button"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="19dp"
-        android:background="@android:color/background_light"
-        android:ems="10"
-        android:inputType="textPersonName" />
+        android:text="SAVED NEWS"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:onClick="savedNews"/>
 
 </RelativeLayout>

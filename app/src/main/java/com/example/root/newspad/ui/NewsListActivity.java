@@ -4,11 +4,16 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.preference.PreferenceManager;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SearchView;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -31,6 +36,7 @@ public class NewsListActivity extends AppCompatActivity {
      private TextView newsSource;
      private ListView mListView;
     private SharedPreferences mSharedPreferences;
+    private SharedPreferences.Editor mEditor;
     private String mSource;
 
     public ArrayList<News> news = new ArrayList<>();
@@ -48,16 +54,55 @@ public class NewsListActivity extends AppCompatActivity {
         Intent intent=getIntent();
         String source=intent.getStringExtra("source");
         //get the view
-        newsSource=(TextView) findViewById(R.id.textView3);
+
         //set text
-        newsSource.setText("news form: " +source);
+
         Typeface senasation=Typeface.createFromAsset(getAssets(),"fonts/sensation.ttf");
-        newsSource.setTypeface(senasation);
+
         mSharedPreferences= PreferenceManager.getDefaultSharedPreferences(this);
         mSource=mSharedPreferences.getString(Constants.PREFERENCE_SOURCE_KEY,null);
-        Log.d("shared pref",mSource);
+        //Log.d("shared pref",mSource);
+        if (mSource != null) {
+            getNews(mSource);
+        }
         getNews(source);
 
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_search, menu);
+        ButterKnife.bind(this);
+
+        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        mEditor = mSharedPreferences.edit();
+
+        MenuItem menuItem = menu.findItem(R.id.action_search);
+        SearchView searchView = (SearchView) MenuItemCompat.getActionView(menuItem);
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                addToSharedPreferences(query);
+                getNews(query);
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                return false;
+            }
+        });
+
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        return super.onOptionsItemSelected(item);
+    }
+    private void addToSharedPreferences(String source) {
+        mEditor.putString(Constants.PREFERENCE_SOURCE_KEY, source).apply();
     }
 
 
