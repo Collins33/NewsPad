@@ -28,8 +28,8 @@ import butterknife.ButterKnife;
 public class NewsListAdapter extends RecyclerView.Adapter<NewsListAdapter.NewsListViewHolder> {
     private Context mContext;
     private ArrayList<News> mNews=new ArrayList<>();
-    private static final int MAX_WIDTH = 900;
-    private static final int MAX_HEIGHT = 900;
+    private static final int MAX_WIDTH = 2500;
+    private static final int MAX_HEIGHT = 1000;
 
     public NewsListAdapter(Context context, ArrayList<News> news){
         mContext=context;
@@ -63,7 +63,7 @@ public class NewsListAdapter extends RecyclerView.Adapter<NewsListAdapter.NewsLi
         public void bindNews(News news){
             mNewsTitle.setText(news.getDescription());
             //mNewsAuthor.setText(news.getAuthor());
-            Picasso.with(mContext).load(news.getWebsite()).resize(MAX_WIDTH, MAX_HEIGHT).centerInside().into(mNewsImage);
+            Picasso.with(mContext).load(news.getWebsite()).resize(MAX_WIDTH, MAX_HEIGHT).into(mNewsImage);
         }
     }
     @Override
