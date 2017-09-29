@@ -1,5 +1,6 @@
 package com.example.root.newspad.ui;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -35,6 +36,7 @@ public class Create_Account extends AppCompatActivity implements View.OnClickLis
     private FirebaseAuth auth;
     private FirebaseAuth.AuthStateListener mAuthListener;
     public static final String TAG = Create_Account.class.getSimpleName();
+    private ProgressDialog mDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +50,15 @@ public class Create_Account extends AppCompatActivity implements View.OnClickLis
         //get instance
         auth=FirebaseAuth.getInstance();
         createAuthListener();
+        createProgressDialog();
     }
+    private void createProgressDialog(){
+        mDialog= new ProgressDialog(this);
+        mDialog.setTitle("BE PATIENT");
+        mDialog.setMessage("AUTHENTICATING ACCOUNT");
+        mDialog.setCancelable(false);
+    }
+
     @Override
     public void onStart(){
         super.onStart();
@@ -110,10 +120,13 @@ public class Create_Account extends AppCompatActivity implements View.OnClickLis
         boolean validConfirm=isValidPassword(password,confirmPassword);
 
         if(!validName||!validEmail||!validConfirm)return;
+        //progress dialogue screen
+        mDialog.show();
 
         auth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
+                mDialog.dismiss();
                 if(task.isSuccessful()){
                     Log.d(TAG, "Authentication successful");
                 }
