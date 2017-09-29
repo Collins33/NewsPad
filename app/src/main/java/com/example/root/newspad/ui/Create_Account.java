@@ -16,6 +16,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -31,7 +32,9 @@ public class Create_Account extends AppCompatActivity implements View.OnClickLis
     @Bind(R.id.loginTextView)
     TextView mLoginTextView;
     private FirebaseAuth auth;
+    private FirebaseAuth.AuthStateListener mAuthListener;
     public static final String TAG = Create_Account.class.getSimpleName();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +46,20 @@ public class Create_Account extends AppCompatActivity implements View.OnClickLis
         mCreateUserButton.setOnClickListener(this);
         //get instance
         auth=FirebaseAuth.getInstance();
+        createAuthListener();
+    }
+    @Override
+    public void onStart(){
+        super.onStart();
+        //add state listener to the firebaseauth object
+        auth.addAuthStateListener(mAuthListener);
+    }
+    @Override
+    public void onStop(){
+        super.onStop();
+        if (mAuthListener != null) {
+            auth.removeAuthStateListener(mAuthListener);
+        }
     }
     public void createNewUser(){
         //gather credentials
@@ -63,6 +80,22 @@ public class Create_Account extends AppCompatActivity implements View.OnClickLis
                 }
             }
         });
+    }
+    //method to listen for authentication
+    public void createAuthListener(){
+        mAuthListener=new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+              final FirebaseUser user=firebaseAuth.getCurrentUser();
+                //check if user is null before going to main activity
+                if(user != null){
+                    Intent intent=new Intent(Create_Account.this,MainActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    startActivity(intent);
+                    finish();
+                }
+            }
+        };
     }
     @Override
     public void onClick(View view) {
