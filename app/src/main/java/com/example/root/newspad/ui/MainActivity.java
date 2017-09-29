@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
 
         mNewsName=(TextView) findViewById(R.id.textView);
         mNewsLogo=(TextView) findViewById(R.id.appLogo);
-        Typeface sensation=Typeface.createFromAsset(getAssets(),"fonts/sensation.ttf");
+        Typeface sensation=Typeface.createFromAsset(getAssets(),"fonts/Pacifico.ttf");
         mNewsLogo.setTypeface(sensation);
         mNewsName.setTypeface(sensation);
 
