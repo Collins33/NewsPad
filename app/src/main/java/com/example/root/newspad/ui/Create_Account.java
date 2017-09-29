@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -61,12 +62,54 @@ public class Create_Account extends AppCompatActivity implements View.OnClickLis
             auth.removeAuthStateListener(mAuthListener);
         }
     }
+
+    //check if credentials are the right ones
+    //email validation
+     public boolean validateEmail(String email){
+          boolean isEmailGood=(email != null && Patterns.EMAIL_ADDRESS.matcher(email).matches());
+         if(!isEmailGood){
+             mEmailEditText.setError("Enter a valid email address");
+             return false;
+         }
+         return isEmailGood;
+     }
+     //validate name
+     public boolean isValidName(String name){
+         if(name.equals("")){
+             mNameEditText.setError("enter a valid name");
+             return false;
+         }
+         return true;
+     }
+     //validate confirm password
+    public boolean isValidPassword(String password,String confirm){
+        if(password.length()<6){
+            mPasswordEditText.setError("password must have more than 6 characters");
+            return false;
+        }
+        else if(!password.equals(confirm)){
+            mPasswordEditText.setError("password does not match");
+            return false;
+        }
+        return true;
+    }
+
+
+
+
+
     public void createNewUser(){
         //gather credentials
         final String name = mNameEditText.getText().toString().trim();
         final String email = mEmailEditText.getText().toString().trim();
         String password = mPasswordEditText.getText().toString().trim();
         String confirmPassword = mConfirmPasswordEditText.getText().toString().trim();
+        //validate credentials
+        boolean validEmail=validateEmail(email);
+        boolean validName=isValidName(name);
+        boolean validConfirm=isValidPassword(password,confirmPassword);
+
+        if(!validName||!validEmail||!validConfirm)return;
 
         auth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override

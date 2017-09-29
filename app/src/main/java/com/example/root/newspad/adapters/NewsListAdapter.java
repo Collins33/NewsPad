@@ -63,7 +63,7 @@ public class NewsListAdapter extends RecyclerView.Adapter<NewsListAdapter.NewsLi
         public void bindNews(News news){
             mNewsTitle.setText(news.getDescription());
             //mNewsAuthor.setText(news.getAuthor());
-            Picasso.with(mContext).load(news.getWebsite()).resize(MAX_WIDTH, MAX_HEIGHT).into(mNewsImage);
+            Picasso.with(mContext).load(news.getWebsite()).into(mNewsImage);
         }
     }
     @Override
