@@ -28,8 +28,8 @@ import butterknife.ButterKnife;
 public class NewsListAdapter extends RecyclerView.Adapter<NewsListAdapter.NewsListViewHolder> {
     private Context mContext;
     private ArrayList<News> mNews=new ArrayList<>();
-    private static final int MAX_WIDTH = 2500;
-    private static final int MAX_HEIGHT = 1000;
+    private static final int MAX_WIDTH = 900;
+    private static final int MAX_HEIGHT = 900;
 
     public NewsListAdapter(Context context, ArrayList<News> news){
         mContext=context;
