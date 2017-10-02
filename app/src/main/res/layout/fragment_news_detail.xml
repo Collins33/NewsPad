@@ -21,20 +21,22 @@
 
     <Button
         android:id="@+id/saveNews"
-        android:layout_width="wrap_content"
+        android:layout_width="180dp"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
+        android:background="@drawable/mybutton"
         android:text="save news" />
 
     <Button
         android:id="@+id/getNews"
-        android:layout_width="wrap_content"
+        android:layout_width="180dp"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_alignTop="@+id/saveNews"
+        android:background="@drawable/mybutton"
         android:text="Instant View" />
 
     <TextView

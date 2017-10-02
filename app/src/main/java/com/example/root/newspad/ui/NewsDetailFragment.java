@@ -2,6 +2,8 @@ package com.example.root.newspad.ui;
 
 
 import android.content.Intent;
+import android.content.res.AssetManager;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -47,12 +49,15 @@ public class NewsDetailFragment extends Fragment implements View.OnClickListener
         newsDetailFragment.setArguments(args);
         //return instance of the fagemnt
         return newsDetailFragment;
+
+
     }
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //unwrap the object and save it in mNews
         mNews= Parcels.unwrap(getArguments().getParcelable("news"));
+
     }
 
 

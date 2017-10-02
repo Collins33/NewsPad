@@ -6,6 +6,6 @@
         android:icon="@drawable/ic_search_white_24dp"
         app:showAsAction="always"
         app:actionViewClass="android.support.v7.widget.SearchView"
-        android:title="Search">
+        android:title="ENTER NEWS SOURCE NAME">
     </item>
 </menu>

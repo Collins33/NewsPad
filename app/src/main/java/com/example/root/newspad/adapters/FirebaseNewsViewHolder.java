@@ -30,8 +30,8 @@ import butterknife.ButterKnife;
  */
 
 public class FirebaseNewsViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-    private static final int MAX_WIDTH = 200;
-    private static final int MAX_HEIGHT = 200;
+    private static final int MAX_WIDTH = 900;
+    private static final int MAX_HEIGHT = 900;
 //    @Bind(R.id.imageView) ImageView mNewsImage;
 //    @Bind(R.id.newsTitle) TextView mNewsTitle;
     //@Bind(R.id.imageView) ImageView mNewsImage;
@@ -50,7 +50,7 @@ public class FirebaseNewsViewHolder extends RecyclerView.ViewHolder implements V
 
     //bind the views
     public void bindNews(News news){
-        ImageView newsImage=(ImageView) mView.findViewById(R.id.imageView);
+        ImageView newsImage=(ImageView) mView.findViewById(R.id.newsImageView);
         TextView  mNewsTitle=(TextView) mView.findViewById(R.id.newsTitle);
 
 

@@ -1,9 +1,12 @@
 package com.example.root.newspad.ui;
 
+import android.graphics.Typeface;
 import android.os.Parcel;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.TextView;
+
 import org.parceler.Parcels;
 
 
@@ -23,6 +26,7 @@ public class NewsDetailActivity extends AppCompatActivity {
     private NewsPagerAdapter newsPagerAdapter;
     ArrayList<News> mNews=new ArrayList<>();
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,5 +38,8 @@ public class NewsDetailActivity extends AppCompatActivity {
         newsPagerAdapter = new NewsPagerAdapter(getSupportFragmentManager(), mNews);
         mViewPager.setAdapter(newsPagerAdapter);
         mViewPager.setCurrentItem(startingPosition);
+
+
+
     }
 }
