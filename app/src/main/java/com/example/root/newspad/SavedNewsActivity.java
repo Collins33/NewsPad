@@ -28,6 +28,7 @@ public class SavedNewsActivity extends AppCompatActivity {
         setUpFirebaseAdapter();
     }
 
+
     private void setUpFirebaseAdapter() {
         mFirebaseAdapter = new FirebaseRecyclerAdapter<News, FirebaseNewsViewHolder>
                 (News.class, R.layout.news_list, FirebaseNewsViewHolder.class,
