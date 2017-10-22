@@ -22,6 +22,7 @@ import com.example.root.newspad.R;
 import com.example.root.newspad.adapters.NewsListAdapter;
 import com.example.root.newspad.models.News;
 import com.example.root.newspad.services.NewsService;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -77,6 +78,7 @@ public class NewsListActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_search, menu);
+        inflater.inflate(R.menu.menu_main,menu);
         ButterKnife.bind(this);
 
         mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
@@ -104,7 +106,24 @@ public class NewsListActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        int id=item.getItemId();
+        if(id == R.id.action_logout){
+            logout();
+            return true;
+        }
+        else if(id == R.id.aboutUS){
+            Intent intent=new Intent(getApplicationContext(),AboutUs.class);
+            startActivity(intent);
+        }
         return super.onOptionsItemSelected(item);
+    }
+
+    private void logout() {
+        FirebaseAuth.getInstance().signOut();
+        Intent intent = new Intent(NewsListActivity.this, Log_In.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+        finish();
     }
     private void addToSharedPreferences(String source) {
         mEditor.putString(Constants.PREFERENCE_SOURCE_KEY, source).apply();

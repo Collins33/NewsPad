@@ -3,6 +3,7 @@ package com.example.root.newspad.ui;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Typeface;
+import android.os.CountDownTimer;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -46,7 +47,20 @@ public class MainActivity extends AppCompatActivity {
         Typeface sensation=Typeface.createFromAsset(getAssets(),"fonts/Pacifico.ttf");
         mNewsLogo.setTypeface(sensation);
         mNewsName.setTypeface(sensation);
+        //countdown timer
+        new CountDownTimer(5000,1000){
 
+            @Override
+            public void onTick(long l) {
+
+            }
+
+            @Override
+            public void onFinish() {
+                Intent intent=new Intent(getApplicationContext(),NewsListActivity.class);
+                startActivity(intent);
+            }
+        }.start();
 //        mSharedPreference= PreferenceManager.getDefaultSharedPreferences(this);
 //        mEditor=mSharedPreference.edit();
 
@@ -101,15 +115,7 @@ public class MainActivity extends AppCompatActivity {
         finish();
     }
 
-    public void seeNews(View view){
-        Intent intent=new Intent(this,NewsListActivity.class);
-//        String source= newsSource.getText().toString();
-//        intent.putExtra("source",source);
 
-        //addToSharedPreference(source);
-        startActivity(intent);
-        //addToFireBase(source);
-    }
     public void savedNews(View view){
         Intent intent = new Intent(MainActivity.this, SavedNewsActivity.class);
         startActivity(intent);
