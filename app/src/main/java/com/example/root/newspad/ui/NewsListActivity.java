@@ -19,6 +19,7 @@ import android.widget.TextView;
 
 import com.example.root.newspad.Constants;
 import com.example.root.newspad.R;
+import com.example.root.newspad.SavedNewsActivity;
 import com.example.root.newspad.adapters.NewsListAdapter;
 import com.example.root.newspad.models.News;
 import com.example.root.newspad.services.NewsService;
@@ -113,6 +114,10 @@ public class NewsListActivity extends AppCompatActivity {
         }
         else if(id == R.id.aboutUS){
             Intent intent=new Intent(getApplicationContext(),AboutUs.class);
+            startActivity(intent);
+        }
+        else if(id==R.id.savedNews){
+            Intent intent = new Intent(NewsListActivity.this, SavedNewsActivity.class);
             startActivity(intent);
         }
         return super.onOptionsItemSelected(item);

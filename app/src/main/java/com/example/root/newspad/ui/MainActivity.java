@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText newsSource;
     private TextView mNewsName;
     private TextView mNewsLogo;
+    private TextView bottomText;
 //    private SharedPreferences mSharedPreference;
 //    private SharedPreferences.Editor mEditor;
     private DatabaseReference mSearchedSource;
@@ -44,11 +45,13 @@ public class MainActivity extends AppCompatActivity {
 
         mNewsName=(TextView) findViewById(R.id.textView);
         mNewsLogo=(TextView) findViewById(R.id.appLogo);
+        bottomText=(TextView) findViewById(R.id.bottomText);
         Typeface sensation=Typeface.createFromAsset(getAssets(),"fonts/Pacifico.ttf");
         mNewsLogo.setTypeface(sensation);
         mNewsName.setTypeface(sensation);
+        bottomText.setTypeface(sensation);
         //countdown timer
-        new CountDownTimer(5000,1000){
+        new CountDownTimer(3000,1000){
 
             @Override
             public void onTick(long l) {
@@ -86,40 +89,11 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
-    @Override
-    //INFLATE THE OVERFLOW MENU
-    public boolean onCreateOptionsMenu(Menu menu){
-        MenuInflater inflater=getMenuInflater();
-        inflater.inflate(R.menu.menu_main,menu);
-        return super.onCreateOptionsMenu(menu);
-    }
-    //what to do when option is selected
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item){
-        int id=item.getItemId();
-        if(id == R.id.action_logout){
-            logout();
-            return true;
-        }
-        else if(id == R.id.aboutUS){
-            Intent intent=new Intent(getApplicationContext(),AboutUs.class);
-            startActivity(intent);
-        }
-        return super.onOptionsItemSelected(item);
-    }
-    private void logout() {
-        FirebaseAuth.getInstance().signOut();
-        Intent intent = new Intent(MainActivity.this, Log_In.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        startActivity(intent);
-        finish();
-    }
 
 
-    public void savedNews(View view){
-        Intent intent = new Intent(MainActivity.this, SavedNewsActivity.class);
-        startActivity(intent);
-    }
+
+
+
 //    public void addToFireBase(String source){
 //        mSearchedSource.push().setValue(source);
 //    }
