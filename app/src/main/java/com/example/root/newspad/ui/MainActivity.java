@@ -62,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
             public void onFinish() {
                 Intent intent=new Intent(getApplicationContext(),NewsListActivity.class);
                 startActivity(intent);
+                finish();
             }
         }.start();
 //        mSharedPreference= PreferenceManager.getDefaultSharedPreferences(this);
