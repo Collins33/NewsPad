@@ -40,6 +40,7 @@ public class FirebaseNewsViewHolder extends RecyclerView.ViewHolder implements V
     View mView;
     Context mContext;
     //constructor
+    public ImageView mNewsViewHolder;
     public FirebaseNewsViewHolder(View itemView){
         super(itemView);
         mView=itemView;
@@ -50,8 +51,11 @@ public class FirebaseNewsViewHolder extends RecyclerView.ViewHolder implements V
 
     //bind the views
     public void bindNews(News news){
-        ImageView newsImage=(ImageView) mView.findViewById(R.id.newsImageView);
+         ImageView newsImage=(ImageView) mView.findViewById(R.id.newsImageView);
         TextView  mNewsTitle=(TextView) mView.findViewById(R.id.newsTitle);
+
+
+
 
 
         mNewsTitle.setText(news.getDescription());

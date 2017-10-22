@@ -18,15 +18,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.Log_In">
-
-        </activity>
+        <activity android:name=".ui.Log_In"></activity>
         <activity android:name=".ui.Create_Account" />
         <activity android:name=".ui.NewsListActivity" />
         <activity android:name=".ui.NewsDetailActivity" />
         <activity android:name=".SavedNewsActivity" />
         <activity android:name=".ui.WebNews" />
-        <activity android:name=".ui.AboutUs"></activity>
+        <activity android:name=".ui.AboutUs" />
+        <activity android:name=".welcomeActivity">
+
+        </activity>
     </application>
 
 </manifest>
