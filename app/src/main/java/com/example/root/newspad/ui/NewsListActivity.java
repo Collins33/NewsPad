@@ -54,7 +54,7 @@ public class NewsListActivity extends AppCompatActivity {
 
         //recieve the intent
         Intent intent=getIntent();
-        String source=intent.getStringExtra("source");
+
         //get the view
 
         //set text
@@ -65,14 +65,14 @@ public class NewsListActivity extends AppCompatActivity {
         mSource=mSharedPreferences.getString(Constants.PREFERENCE_SOURCE_KEY,null);
         TextView heading=(TextView) findViewById(R.id.heading);
         String headline= heading.getText().toString();
-        heading.setText(mSource);
+
         Typeface style=Typeface.createFromAsset(getAssets(),"fonts/sensation.ttf");
         heading.setTypeface(style);
         //Log.d("shared pref",mSource);
         if (mSource != null) {
-            getNews(mSource);
+            getNews("techcrunch");
         }
-        getNews(source);
+        getNews("techcrunch");
 
     }
     @Override
@@ -91,6 +91,8 @@ public class NewsListActivity extends AppCompatActivity {
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
+                TextView heading=(TextView) findViewById(R.id.heading);
+                heading.setText(query);
                 addToSharedPreferences(query);
                 getNews(query);
                 return false;
