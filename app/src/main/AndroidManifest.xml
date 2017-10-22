@@ -20,13 +20,36 @@
         </activity>
         <activity android:name=".ui.Log_In"></activity>
         <activity android:name=".ui.Create_Account" />
-        <activity android:name=".ui.NewsListActivity" />
-        <activity android:name=".ui.NewsDetailActivity" />
-        <activity android:name=".SavedNewsActivity" />
-        <activity android:name=".ui.WebNews" />
+        <activity android:name=".ui.NewsListActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.root.newspad.ui.MainActivity">
+            </meta-data>
+        </activity>
+        <activity android:name=".ui.NewsDetailActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.root.newspad.ui.MainActivity">
+            </meta-data>
+        </activity>
+        <activity android:name=".SavedNewsActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.root.newspad.ui.MainActivity">
+            </meta-data>
+        </activity>
+        <activity android:name=".ui.WebNews" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.root.newspad.ui.MainActivity">
+            </meta-data>
+        </activity>
         <activity android:name=".ui.AboutUs" />
         <activity android:name=".welcomeActivity">
-
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.root.newspad.ui.MainActivity">
+            </meta-data>
         </activity>
     </application>
 
