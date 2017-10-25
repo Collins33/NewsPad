@@ -73,7 +73,7 @@ public class NewsListActivity extends AppCompatActivity {
         //initial news sources
 
         List<String> newsSources=new ArrayList<String>();
-        newsSources.add("techcrunc");
+        newsSources.add("techcrunch");
         newsSources.add("bbc-news");
         newsSources.add("cnn");
         newsSources.add("buzzfeed");
@@ -87,6 +87,9 @@ public class NewsListActivity extends AppCompatActivity {
         //Log.d("shared pref",mSource);
         if (mSource != null) {
             getNews(newsSources.get(newsSource));
+
+        }
+        if(heading != null){
             heading.setText(newsSources.get(newsSource));
         }
 
