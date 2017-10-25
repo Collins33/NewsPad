@@ -27,6 +27,8 @@ import com.google.firebase.auth.FirebaseAuth;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -68,11 +70,25 @@ public class NewsListActivity extends AppCompatActivity {
 
         Typeface style=Typeface.createFromAsset(getAssets(),"fonts/sensation.ttf");
         heading.setTypeface(style);
+        //initial news sources
+
+        List<String> newsSources=new ArrayList<String>();
+        newsSources.add("techcrunc");
+        newsSources.add("bbc-news");
+        newsSources.add("cnn");
+        newsSources.add("buzzfeed");
+        newsSources.add("espn");
+        newsSources.add("mashable");
+        newsSources.add("recode");
+        newsSources.add("techradar");
+        Random randomNumber=new Random();
+        int newsSource=randomNumber.nextInt(8);
+
         //Log.d("shared pref",mSource);
         if (mSource != null) {
-            getNews("techcrunch");
+            getNews(newsSources.get(newsSource));
+            heading.setText(newsSources.get(newsSource));
         }
-        getNews("techcrunch");
 
     }
     @Override
