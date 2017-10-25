@@ -9,6 +9,7 @@ android {
         targetSdkVersion 26
         versionCode 1
         versionName "1.0"
+        multiDexEnabled true
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     packagingOptions {
@@ -54,6 +55,7 @@ dependencies {
     compile 'com.google.firebase:firebase-database:9.2.1'
     compile 'com.firebaseui:firebase-ui-database:0.4.1'
     compile 'com.google.firebase:firebase-auth:9.2.1'
+    compile 'com.android.support:multidex:1.0.1'
     testCompile 'junit:junit:4.12'
     annotationProcessor 'org.parceler:parceler:1.1.6'
 }

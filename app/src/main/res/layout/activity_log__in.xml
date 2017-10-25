@@ -4,17 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/holo_blue_bright"
+    android:background="@drawable/newsback"
     tools:context="com.example.root.newspad.ui.Log_In">
 
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
         android:orientation="vertical"
-        android:padding="30dp">
+        android:padding="30dp"
+        android:layout_above="@+id/registerTextView"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="41dp">
 
         <EditText
             android:id="@+id/emailEditText"
@@ -49,31 +51,39 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
-            android:background="@color/cardview_shadow_start_color"
+            android:background="@android:color/background_dark"
             android:padding="10dp"
-            android:text="Log in" />
-
-        <TextView
-            android:id="@+id/registerTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="20dp"
-            android:text="Don't have an account? Sign up here!"
-            android:textSize="15sp"
-            android:textStyle="bold" />
+            android:text="Log in"
+            android:textColor="@android:color/background_light" />
 
     </LinearLayout>
 
     <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+
+        android:layout_height="wrap_content"
+        android:layout_marginTop="55dp"
+        android:text="Login to newspad"
+        android:textColor="@android:color/background_light"
+        android:textSize="30dp"
+        android:textStyle="bold"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:id="@+id/registerTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/linearLayout"
 
-        android:layout_centerHorizontal="true"
-        android:text="Login"
-        android:textSize="30dp"
-        android:textStyle="bold" />
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="42dp"
+        android:text="Don't have an account? Sign up here!"
+        android:textAlignment="center"
+        android:textColor="@android:color/background_dark"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>
