@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
+import android.widget.TextView;
 
 import com.example.root.newspad.adapters.FirebaseNewsListAdapter;
 import com.example.root.newspad.adapters.FirebaseNewsViewHolder;
@@ -20,20 +21,22 @@ import com.google.firebase.database.FirebaseDatabase;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class SavedNewsActivity extends AppCompatActivity implements OnStartDragListener {
+public class SavedNewsActivity extends AppCompatActivity  {
     private DatabaseReference mNewsReference;
 
-    private ItemTouchHelper mItemTouchHelper;
+
     private FirebaseNewsListAdapter mFirebaseAdapter;
 
 
     @Bind(R.id.recyclerView) RecyclerView mRecyclerView;
+    @Bind(R.id.heading) TextView heading;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
         ButterKnife.bind(this);
+        heading.setText("SAVED NEWS");
 
         //mNewsReference = FirebaseDatabase.getInstance().getReference(Constants.FIREBASE_CHILD_RESTAURANTS).child(uid);
         setUpFirebaseAdapter();
@@ -43,29 +46,24 @@ public class SavedNewsActivity extends AppCompatActivity implements OnStartDragL
     private void setUpFirebaseAdapter() {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         String uid = user.getUid();
-        mNewsReference = FirebaseDatabase.getInstance().getReference(Constants.FIREBASE_CHILD_RESTAURANTS).child(uid);
+        mNewsReference = FirebaseDatabase.getInstance().getReference(Constants.FIREBASE_CHILD_RESTAURANTS);
 
         mFirebaseAdapter = new FirebaseNewsListAdapter(News.class,
                 R.layout.news_list, FirebaseNewsViewHolder.class,
-                mNewsReference, this, this);
+                mNewsReference, this);
 
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mRecyclerView.setAdapter(mFirebaseAdapter);
 
         ItemTouchHelper.Callback callback = new SimpleItemTouchHelperCallback(mFirebaseAdapter);
-        mItemTouchHelper = new ItemTouchHelper(callback);
-        mItemTouchHelper.attachToRecyclerView(mRecyclerView);
+
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
         mFirebaseAdapter.cleanup();
-    }
-    @Override
-    public void onStartDrag(RecyclerView.ViewHolder viewHolder) {
-        mItemTouchHelper.startDrag(viewHolder);
     }
 
 }

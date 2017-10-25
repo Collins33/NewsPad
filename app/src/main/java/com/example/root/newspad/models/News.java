@@ -12,7 +12,6 @@ public class News {
      String description;
      String website;
      String image;
-
      String date;
 
     public News(String title,String description,String author,String image,String website,String date){

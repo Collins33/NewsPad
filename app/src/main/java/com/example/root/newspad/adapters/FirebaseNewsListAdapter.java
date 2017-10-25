@@ -20,7 +20,7 @@ public class FirebaseNewsListAdapter extends FirebaseRecyclerAdapter<News, Fireb
 
     public FirebaseNewsListAdapter(Class<News> modelClass, int modelLayout,
                                          Class<FirebaseNewsViewHolder> viewHolderClass,
-                                         Query ref, OnStartDragListener onStartDragListener, Context context) {
+                                         Query ref,Context context) {
         super(modelClass, modelLayout, viewHolderClass, ref);
         mRef = ref.getRef();
         //mOnStartDragListener = onStartDragListener;
