@@ -34,7 +34,7 @@ public class NewsDetailActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         mNews= Parcels.unwrap(getIntent().getParcelableExtra("news"));
-        int startingPosition = getIntent().getIntExtra("position", 0);
+        int startingPosition = getIntent().getIntExtra("position",0);
         newsPagerAdapter = new NewsPagerAdapter(getSupportFragmentManager(), mNews);
         mViewPager.setAdapter(newsPagerAdapter);
         mViewPager.setCurrentItem(startingPosition);

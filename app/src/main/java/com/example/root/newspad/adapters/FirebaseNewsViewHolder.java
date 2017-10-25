@@ -73,7 +73,7 @@ public class FirebaseNewsViewHolder extends RecyclerView.ViewHolder implements V
                 }
                 int itemPosition=getLayoutPosition();
                 Intent intent=new Intent(mContext, NewsDetailActivity.class);
-                intent.putExtra("position", itemPosition + "");
+                intent.putExtra("position", itemPosition);
                 //wrap the array of news
                 intent.putExtra("news", Parcels.wrap(news));
 
