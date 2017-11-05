@@ -13,7 +13,7 @@ public class News {
      String website;
      String image;
      String date;
-
+     private String pushId;
     public News(String title,String description,String author,String image,String website,String date){
         this.title=title;
         this.description=description;
@@ -47,5 +47,13 @@ public class News {
 
     public String getWebsite() {
         return website;
+    }
+
+    public String getPushId() {
+        return pushId;
+    }
+
+    public void setPushId(String pushId) {
+        this.pushId = pushId;
     }
 }

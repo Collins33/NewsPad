@@ -45,8 +45,9 @@ public class SavedNewsActivity extends AppCompatActivity  {
 
     private void setUpFirebaseAdapter() {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        //String uid = user.getUid();
-        mNewsReference = FirebaseDatabase.getInstance().getReference(Constants.FIREBASE_CHILD_RESTAURANTS);
+        String uid = user.getUid();
+        mNewsReference = FirebaseDatabase.getInstance().getReference(Constants.FIREBASE_CHILD_RESTAURANTS).child(uid);
+
 
         mFirebaseAdapter = new FirebaseNewsListAdapter(News.class,
                 R.layout.news_list, FirebaseNewsViewHolder.class,
