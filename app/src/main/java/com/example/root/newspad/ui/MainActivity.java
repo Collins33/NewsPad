@@ -19,6 +19,7 @@ import android.widget.TextView;
 
 import com.example.root.newspad.Constants;
 import com.example.root.newspad.R;
+import com.example.root.newspad.Register;
 import com.example.root.newspad.SavedNewsActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -62,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onFinish() {
-                Intent intent=new Intent(getApplicationContext(),NewsListActivity.class);
+                Intent intent=new Intent(getApplicationContext(),Register.class);
                 startActivity(intent);
                 finish();
             }
