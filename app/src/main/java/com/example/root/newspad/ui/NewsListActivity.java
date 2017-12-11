@@ -156,10 +156,12 @@ public class NewsListActivity extends AppCompatActivity {
     }
 
 
+
     //method to get the news
       public void getNews(String source){
           //create instance of the service
           final NewsService newsService=new NewsService();
+          //use the instance to access the findNews()
           NewsService.findNews(source, new Callback() {
               @Override
               public void onFailure(Call call, IOException e) {
