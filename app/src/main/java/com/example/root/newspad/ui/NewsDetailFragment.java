@@ -35,9 +35,10 @@ public class NewsDetailFragment extends Fragment implements View.OnClickListener
     @Bind(R.id.newsDescription) TextView mNewsDescription;
     @Bind(R.id.newsAuthor) TextView mNewsAutor;
     @Bind(R.id.newsImage) ImageView mNewsImage;
-    @Bind(R.id.saveNews) TextView mSaveNewsButton;
+
     @Bind(R.id.getNews) TextView mGetNewsButton;
     @Bind(R.id.webPage) TextView mNewsPage;
+    @Bind(R.id.imageView2) ImageView mSaveImage;
 
     private News mNews;
 
@@ -80,8 +81,9 @@ public class NewsDetailFragment extends Fragment implements View.OnClickListener
         mNewsDescription.setText(mNews.getDescription());
         mNewsAutor.setText(mNews.getAuthor());
         mNewsPage.setText(mNews.getImage());
-        mSaveNewsButton.setOnClickListener(this);
+
         mGetNewsButton.setOnClickListener(this);
+        mSaveImage.setOnClickListener(this);
 
 
 
@@ -91,7 +93,7 @@ public class NewsDetailFragment extends Fragment implements View.OnClickListener
 
     @Override
     public void onClick(View v) {
-        if (v == mSaveNewsButton) {
+        if (v == mSaveImage) {
             FirebaseUser user= FirebaseAuth.getInstance().getCurrentUser();
             String uid=user.getUid();
 
