@@ -6,6 +6,7 @@ import android.content.res.AssetManager;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.ShareCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,7 +36,7 @@ public class NewsDetailFragment extends Fragment implements View.OnClickListener
     @Bind(R.id.newsDescription) TextView mNewsDescription;
     @Bind(R.id.newsAuthor) TextView mNewsAutor;
     @Bind(R.id.newsImage) ImageView mNewsImage;
-
+    @Bind(R.id.imageShare) ImageView mNewsShare;
     @Bind(R.id.getNews) TextView mGetNewsButton;
     @Bind(R.id.webPage) TextView mNewsPage;
     @Bind(R.id.imageView2) ImageView mSaveImage;
@@ -84,6 +85,7 @@ public class NewsDetailFragment extends Fragment implements View.OnClickListener
 
         mGetNewsButton.setOnClickListener(this);
         mSaveImage.setOnClickListener(this);
+        mNewsShare.setOnClickListener(this);
 
 
 
@@ -114,6 +116,17 @@ public class NewsDetailFragment extends Fragment implements View.OnClickListener
             Intent intent=new Intent(getContext(),WebNews.class);
             intent.putExtra("website",website);
             startActivity(intent);
+        }
+        else if(v == mNewsShare){
+            String url=mNewsPage.getText().toString();
+            String mimeType="text/plain";
+
+            ShareCompat.IntentBuilder
+                    .from(getActivity())
+                    .setType(mimeType)
+                    .setChooserTitle("Share this text with: ")
+                    .setText(url)
+                    .startChooser();
         }
     }
 
