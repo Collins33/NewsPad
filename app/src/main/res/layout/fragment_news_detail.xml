@@ -19,17 +19,6 @@
         android:textColor="@android:color/black"
         android:textSize="16dp" />
 
-    <Button
-        android:id="@+id/getNews"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:drawableLeft="@drawable/ic_explore_black_24dp"
-        android:background="?attr/colorButtonNormal"
-        android:text="Instant View"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
-
     <TextView
         android:id="@+id/webPage"
         android:layout_width="wrap_content"
@@ -50,7 +39,7 @@
         android:layout_below="@+id/newsTitle"
         android:text="newsDescription"
         android:textColor="@android:color/black"
-        android:textSize="25dp" />
+        android:textSize="20dp" />
 
     <TextView
         android:id="@+id/newsAuthor"
@@ -62,34 +51,43 @@
         android:layout_marginTop="23dp"
         android:text="Author"
         android:textColor="@android:color/black"
-        android:textSize="20dp" />
+        android:textSize="15dp" />
 
     <ImageView
         android:id="@+id/newsImage"
         android:layout_width="match_parent"
         android:layout_height="200dp"
         app:srcCompat="@android:color/background_dark"
-        android:layout_alignParentTop="true"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/imageShare"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
     <ImageView
         android:id="@+id/imageView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/ic_save_black_24dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_width="50dp"
+        android:layout_height="30dp"
+        android:layout_above="@+id/newsImage"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        app:srcCompat="@drawable/ic_save_black_24dp" />
 
     <ImageView
         android:id="@+id/imageShare"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/ic_share_black_24dp"
-        android:layout_alignParentBottom="true"
-        android:layout_toLeftOf="@+id/getNews"
-        android:layout_toStartOf="@+id/getNews"
-        android:layout_marginRight="50dp"
-        android:layout_marginEnd="50dp" />
+        android:layout_width="50dp"
+        android:layout_height="30dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="13dp"
+        app:srcCompat="@drawable/ic_share_black_24dp" />
+
+    <ImageView
+        android:id="@+id/imageWeb"
+        android:layout_width="50dp"
+        android:layout_height="30dp"
+        android:layout_above="@+id/newsImage"
+        android:layout_centerHorizontal="true"
+        app:srcCompat="@drawable/ic_explore_black_24dp" />
+
 </RelativeLayout>

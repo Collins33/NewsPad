@@ -37,7 +37,7 @@ public class NewsDetailFragment extends Fragment implements View.OnClickListener
     @Bind(R.id.newsAuthor) TextView mNewsAutor;
     @Bind(R.id.newsImage) ImageView mNewsImage;
     @Bind(R.id.imageShare) ImageView mNewsShare;
-    @Bind(R.id.getNews) TextView mGetNewsButton;
+    @Bind(R.id.imageWeb) ImageView mGetNewsButton;
     @Bind(R.id.webPage) TextView mNewsPage;
     @Bind(R.id.imageView2) ImageView mSaveImage;
 
@@ -64,11 +64,9 @@ public class NewsDetailFragment extends Fragment implements View.OnClickListener
 
     }
 
-
     public NewsDetailFragment() {
         // Required empty public constructor
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -82,13 +80,9 @@ public class NewsDetailFragment extends Fragment implements View.OnClickListener
         mNewsDescription.setText(mNews.getDescription());
         mNewsAutor.setText(mNews.getAuthor());
         mNewsPage.setText(mNews.getImage());
-
         mGetNewsButton.setOnClickListener(this);
         mSaveImage.setOnClickListener(this);
         mNewsShare.setOnClickListener(this);
-
-
-
         return view;
 
     }
@@ -111,12 +105,14 @@ public class NewsDetailFragment extends Fragment implements View.OnClickListener
 
             Toast.makeText(getContext(), "saved", Toast.LENGTH_LONG).show();
         }
+
         else if(v == mGetNewsButton){
             String website=mNewsPage.getText().toString();
             Intent intent=new Intent(getContext(),WebNews.class);
             intent.putExtra("website",website);
             startActivity(intent);
         }
+
         else if(v == mNewsShare){
             String url=mNewsPage.getText().toString();
             String mimeType="text/plain";
@@ -124,7 +120,7 @@ public class NewsDetailFragment extends Fragment implements View.OnClickListener
             ShareCompat.IntentBuilder
                     .from(getActivity())
                     .setType(mimeType)
-                    .setChooserTitle("Share this text with: ")
+                    .setChooserTitle("Share this story with: ")
                     .setText(url)
                     .startChooser();
         }
