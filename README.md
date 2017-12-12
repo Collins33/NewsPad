@@ -5,7 +5,9 @@ Instanews is an instant news delivery app powered by the news api.It is aimed at
 
   - GET A LIST OF NEWS FROM THE SOURCE
 
-  - CLICK THE LIST TO GET MORE NEWS
+  - CLICK A NEWS ARTICLE TO GET MORE DETAILS AND MORE ACTION
+
+  - SAVE A NEWS ARTICLE, SHARE A NEWS ARTICLE OR VIEW THE WEBPAGE
 
 
 # CREATOR
