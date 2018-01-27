@@ -17,6 +17,7 @@ import android.view.MenuItem;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.example.root.newspad.Category;
 import com.example.root.newspad.Constants;
 import com.example.root.newspad.R;
 import com.example.root.newspad.SavedNewsActivity;
@@ -139,6 +140,10 @@ public class NewsListActivity extends AppCompatActivity {
         }
         else if(id==R.id.savedNews){
             Intent intent = new Intent(NewsListActivity.this, SavedNewsActivity.class);
+            startActivity(intent);
+        }
+        else if(id ==R.id.category){
+            Intent intent=new Intent(getApplicationContext(), Category.class);
             startActivity(intent);
         }
         return super.onOptionsItemSelected(item);
