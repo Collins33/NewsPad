@@ -30,31 +30,42 @@
             android:id="@+id/button2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="SPORTS" />
+            android:text="SPORTS"
+            android:layout_weight="1"
+            android:onClick="sports"
+            />
 
         <Button
             android:id="@+id/button4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="TECHNOLOGY" />
+            android:text="TECHNOLOGY"
+            android:layout_weight="1"
+            android:onClick="technology"/>
 
         <Button
             android:id="@+id/button5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="POLITICS" />
+            android:text="POLITICS"
+            android:layout_weight="1"
+            android:onClick="politics"/>
 
         <Button
             android:id="@+id/button6"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="FINANCE" />
+            android:text="FINANCE"
+            android:layout_weight="1"
+            android:onClick="finance"/>
 
         <Button
             android:id="@+id/button7"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="HEALTH" />
+            android:text="HEALTH"
+            android:layout_weight="1"
+            android:onClick="health"/>
     </LinearLayout>
 
 </RelativeLayout>
