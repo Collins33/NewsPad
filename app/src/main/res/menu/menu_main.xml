@@ -16,5 +16,10 @@
         android:title="Saved news"
         android:visible="true"
         app:showAsAction="never" />
+    <item
+        android:id="@+id/category"
+        android:title="Categories"
+        android:visible="true"
+        app:showAsAction="never" />
 
 </menu>
