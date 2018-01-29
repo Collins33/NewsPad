@@ -7,6 +7,9 @@ package com.example.root.newspad;
 public class Constants {
     public static final String NEWS_TOKEN= BuildConfig.NEWS_TOKEN;
     public static final String NEWS_SOURCE = "source";
+    public static final String NEWS_CATEGORY="q";
+    //QUERY TO SORT NEWS BY
+    public static final String NEWS_SORT="publishedAt";
     //for adding shared preference
     public static final String PREFERENCE_SOURCE_KEY="source";
     //the key value for adding to firebase

@@ -45,6 +45,29 @@ public class NewsService {
 
     }
 
+    //FINDING NEWS ACCORDING TO CATEGORY
+    public static void findByCategory(String category, Callback callback){
+        //create the client
+        OkHttpClient client=new OkHttpClient();
+        //build url plus the query
+        HttpUrl.Builder urlBuilder=HttpUrl.parse("https://newsapi.org/v2/everything?").newBuilder();
+        //add the parameters
+        urlBuilder.addQueryParameter("apikey",Constants.NEWS_TOKEN);
+        urlBuilder.addQueryParameter("sortBy",Constants.NEWS_SORT);
+
+        //build final url
+        String url=urlBuilder.build().toString();
+
+        //make request with the url
+        Request request=new Request.Builder()
+                .url(url)
+                .build();
+
+        //make the api call with the built url
+        Call call=client.newCall(request);
+        call.enqueue(callback);
+    }
+
     //process the results
     public  ArrayList<News> processResults(Response response){
         //create arraylist to contain the news
