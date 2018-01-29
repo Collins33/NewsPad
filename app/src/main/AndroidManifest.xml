@@ -43,8 +43,9 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.root.newspad.ui.NewsListActivity" />
         </activity>
-        <activity android:name=".Register"></activity>
-        <activity android:name=".Category"></activity>
+        <activity android:name=".Register" />
+        <activity android:name=".Category" />
+        <activity android:name=".categorynews"></activity>
     </application>
 
 </manifest>

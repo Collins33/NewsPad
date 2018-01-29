@@ -1,5 +1,6 @@
 package com.example.root.newspad;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -21,19 +22,34 @@ public class Category extends AppCompatActivity {
 
 
     public void sports(View view) {
-        Toast toast=Toast.makeText(getApplicationContext(),"sports",Toast.LENGTH_SHORT);
-        toast.show();
+        Intent intent=new Intent(getApplicationContext(),categorynews.class);
+        intent.putExtra("sports","sports");
+        startActivity(intent);
     }
 
     public void technology(View view) {
+        Intent intent=new Intent(getApplicationContext(),categorynews.class);
+        intent.putExtra("sports","sports");
+        startActivity(intent);
     }
 
     public void politics(View view) {
+        Intent intent=new Intent(getApplicationContext(),categorynews.class);
+        intent.putExtra("sports","sports");
+        startActivity(intent);
     }
 
     public void finance(View view) {
+        Intent intent=new Intent(getApplicationContext(),categorynews.class);
+        intent.putExtra("sports","sports");
+        startActivity(intent);
+
     }
 
     public void health(View view) {
+        Intent intent=new Intent(getApplicationContext(),categorynews.class);
+        intent.putExtra("sports","sports");
+        startActivity(intent);
+
     }
 }
